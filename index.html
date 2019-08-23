@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>	
+<head>
+	<meta charset="utf-8">
+	 <title> Prework </title>
+	 
+
+
+<style>
+	/*selección de texto*/
+	::selection {color: gold;  background: azure;} 
+	::placeholder{color: royalblue};
+	/* width */ ::-webkit-scrollbar {width: 7px;}/* Track */::-webkit-scrollbar-track {background: rgba(161, 161, 161, 0.219); }/* Handle */::-webkit-scrollbar-thumb {background: #ffd51c; }/* Handle on hover */::-webkit-scrollbar-thumb:hover {background: #111; }
+	
+	button{
+		background-color: linen;
+		border: none;
+		border-radius: 20px;
+		height: 25px;
+		box-shadow: 0px 0px 10px lightgray;
+		transition: .8s;
+		border: 2px solid rgb(73, 138, 235);
+	}
+	button:hover{
+		box-shadow: 0px 5px 2px rgba(255, 255, 255, 0.603);
+	}
+	#menu{
+		height: 50px;		
+		width: 80%;
+		left: 10%;
+		padding-top: 20px;
+		background-color: rgb(25, 38, 110);
+		position: fixed;
+		display:flex;
+		justify-content: space-evenly;
+		border-radius: 20px;
+	}
+	#contenedor{
+		width: 40%;
+		margin: 80px 30%;
+		float: left;
+		display:flex;
+		flex-direction: column;
+		align-items: center;
+		border: 1px #352c03 solid;
+
+	}
+
+</style> 
+
+
+
+
+</head>
+
+
+
+	<body>
+		<div id="menu">
+		<button onclick="texto()">Campo de texto</button>
+		<button onclick="numero()">Campo de número</button>
+		<button onclick="email()">Campo para introducir email</button>
+		<button onclick="lista()">Lista de selección</button>
+		<button onclick="noExclusivo()">Campo para incluir unas opciones no exclusivas de selección</button>
+		<button onclick="exclusivo()">Campo para incluir opciones exclusivas de selección.</button>
+		<button onclick="enviar()">Botón de enviar</button>
+		</div>
+	
+
+		<form action="sdfj" style="background-color:aqua">
+			<div id="contenedor">
+
+
+			</div>
+		</form>
+
+		
+			
+
+<script>
+
+//var parrafo = document.createElement("p");
+//document.body.appendChild(parrafo);
+//parrafo.textContent = "Hola";
+//document.body.style.backgroundColor = "red";
+
+var contenedor = document.querySelector("#contenedor");
+
+	var titu = prompt("Elige el título de tu formulario");
+	var titulo = document.createElement("h1");
+	contenedor.appendChild(titulo);
+	titulo.textContent = titu;
+
+var i = 1;
+function texto (){
+	
+	var di = document.createElement("div");
+	di.style.margin="10px";
+
+	contenedor.appendChild(di);
+
+	var etiqueta = prompt("Elige la etiqueta");
+	var la = document.createElement("label");
+	di.appendChild(la);
+	la.textContent = etiqueta;
+	la.setAttribute("for","cadena"+i);
+	la.style.margin="10px";
+
+	var place = prompt("Elige el placeholder del input");
+	var inp = document.createElement("input");
+	di.appendChild(inp);
+	inp.setAttribute("id", "cadena"+i);
+	inp.setAttribute("placeholder", place);
+	i++;
+}
+
+function numero (){
+
+var di = document.createElement("div");
+di.style.margin="10px";
+
+contenedor.appendChild(di);
+
+var etiqueta = prompt("Elige la etiqueta");
+var la = document.createElement("label");
+di.appendChild(la);
+la.textContent = etiqueta;
+la.setAttribute("for","cadena"+i);
+la.style.margin="10px";
+
+var place = prompt("Elige el mínimo numérico");
+while (isNaN(place)|| place==''){
+	alert("NUMERICO");
+	var place = prompt("Elige el mínimo numérico");
+}
+var place2 = prompt("Elige el máximo numérico");
+while (isNaN(place2) || place2==''){
+	alert("NUMERICO");
+var place2 = prompt("Elige el máximo numérico");
+}
+
+var inp = document.createElement("input");
+di.appendChild(inp);
+inp.setAttribute("type", "number");
+inp.setAttribute("id", "cadena"+i);
+inp.setAttribute("min", place);
+inp.setAttribute("max", place2);
+
+i++;
+
+}
+
+function email (){
+
+var di = document.createElement("div");
+di.style.margin="10px";
+
+contenedor.appendChild(di);
+
+var etiqueta = prompt("Elige la etiqueta");
+var la = document.createElement("label");
+di.appendChild(la);
+la.textContent = etiqueta;
+la.setAttribute("for","cadena"+i);
+la.style.margin="10px";
+
+var place = prompt("Escribe el placeholder");
+var inp = document.createElement("input");
+di.appendChild(inp);
+inp.setAttribute("type", "email");
+inp.setAttribute("id", "cadena"+i);
+inp.setAttribute("placeholder", place);
+i++;
+
+}
+
+function lista (){
+
+var di = document.createElement("div");
+di.style.margin="10px";
+
+contenedor.appendChild(di);
+
+var etiqueta = prompt("Elige la etiqueta");
+var la = document.createElement("label");
+di.appendChild(la);
+la.textContent = etiqueta;
+la.setAttribute("for","cadena"+i);
+la.style.margin="10px";
+
+
+var sel = document.createElement("select");
+di.appendChild(sel);
+sel.setAttribute("id", "cadena"+i);
+
+var cantidad = prompt("¿Cuantas opciones tiene tu selección?");
+
+while (isNaN(cantidad) || cantidad ==""){
+	alert("OPCIONES NUMERICAS");
+	var cantidad = prompt("¿Cuantas opciones tiene tu selección?");
+}
+//Comprobar numero
+
+
+for(j=1; j<=cantidad;j++){
+	
+	var opt = document.createElement("option");
+	sel.appendChild(opt);
+	opt.textContent = prompt("Escribe tu "+j+" opción");
+
+}
+i++;
+
+}
+
+
+function noExclusivo (){
+
+
+var etiqueta = prompt("Elige el título de la sección");
+var tit = document.createElement("h3");
+contenedor.appendChild(tit);
+tit.textContent = etiqueta;
+
+var cantidad = prompt("¿Cuantos Checkbox quieres?");
+
+while (isNaN(cantidad) || cantidad ==""){
+	alert("OPCIONES NUMERICAS");
+	var cantidad = prompt("¿Cuantos Checkbox quieres?");
+}
+
+
+for(j=1; j<=cantidad;j++){
+	var di = document.createElement("div");
+contenedor.appendChild(di);
+di.style.margin="10px";
+
+	var etiqueta = prompt("Elige la etiqueta");
+var la = document.createElement("label");
+di.appendChild(la);
+la.textContent = etiqueta;
+la.setAttribute("for",j+"cadenacheck"+i);
+la.style.margin="10px"; 
+
+var check = document.createElement("input");
+di.appendChild(check);
+check.setAttribute("type","checkbox");
+check.setAttribute("id",j+"cadenacheck"+i);
+}
+i++;
+
+}
+
+
+function exclusivo (){
+var etiqueta = prompt("Elige el título de la sección");
+var tit = document.createElement("h3");
+contenedor.appendChild(tit);
+tit.textContent = etiqueta;
+
+var cantidad = prompt("¿Cuantos Radios quieres?");
+
+while (isNaN(cantidad) || cantidad ==""){
+	alert("OPCIONES NUMERICAS");
+	var cantidad = prompt("¿Cuantos Radios quieres?");
+}
+
+
+for(j=1; j<=cantidad;j++){
+	var di = document.createElement("div");
+di.style.margin="10px";
+
+contenedor.appendChild(di);
+
+	var etiqueta = prompt("Elige la etiqueta");
+var la = document.createElement("label");
+di.appendChild(la);
+la.textContent = etiqueta;
+la.setAttribute("for",j+"cadenarad"+i);
+la.style.margin="10px"; 
+
+var check = document.createElement("input");
+di.appendChild(check);
+check.setAttribute("type","radio");
+check.setAttribute("name","rad" +i);
+check.setAttribute("id",j+"cadenarad"+i);
+}
+i++;
+}
+
+function enviar(){
+	
+	var di = document.createElement("div");
+	contenedor.appendChild(di);
+
+	var valorsito = prompt("¿Nombre del botón de enviar?");
+
+	var leboton = document.createElement("input");
+	leboton.setAttribute("type", "submit");
+	di.appendChild(leboton);
+	leboton.setAttribute("value", valorsito);
+}
+
+
+
+
+</script>
+
+
+	</body>	    
+</html>
+
+
+
+
