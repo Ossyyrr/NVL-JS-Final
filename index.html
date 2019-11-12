@@ -2,16 +2,29 @@
 <html>	
 <head>
 	<meta charset="utf-8">
-	 <title> Prework </title>
+	 <title> Creador de Formularios | Patricia Manzanero </title>
+	 <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 	 
 
 
 <style>
 	/*selección de texto*/
 	::selection {color: gold;  background: azure;} 
-	::placeholder{color: royalblue};
+	::placeholder{color: rgb(110, 153, 214)};
 	/* width */ ::-webkit-scrollbar {width: 7px;}/* Track */::-webkit-scrollbar-track {background: rgba(161, 161, 161, 0.219); }/* Handle */::-webkit-scrollbar-thumb {background: #ffd51c; }/* Handle on hover */::-webkit-scrollbar-thumb:hover {background: #111; }
 	
+	body{
+		font-family: 'Raleway', sans-serif;
+	}
+	h1{
+		text-align: center;
+		color: #292929;
+	}
+	main{
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
 	button{
 		background-color: linen;
 		border: none;
@@ -19,31 +32,101 @@
 		height: 25px;
 		box-shadow: 0px 0px 10px lightgray;
 		transition: .8s;
-		border: 2px solid rgb(73, 138, 235);
+		padding: 2px 20px;
+		border: 2px solid wheat;
+		outline: none;
+		margin: 10px;
 	}
 	button:hover{
-		box-shadow: 0px 5px 2px rgba(255, 255, 255, 0.603);
+		box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.603);
 	}
 	#menu{
 		height: 50px;		
-		width: 80%;
-		left: 10%;
+		width: 70%;
+		left: 15%;
 		padding-top: 20px;
-		background-color: rgb(25, 38, 110);
 		position: fixed;
 		display:flex;
 		justify-content: space-evenly;
 		border-radius: 20px;
+		flex-wrap: wrap;
+	}
+	form{
+		max-width: 80%;
+		margin: 140px;
 	}
 	#contenedor{
-		width: 40%;
-		margin: 80px 30%;
-		float: left;
-		display:flex;
+		display: flex;
 		flex-direction: column;
 		align-items: center;
-		border: 1px #352c03 solid;
+		border: 1px #bbbbbb solid;
+		padding: 25px;
+	}
+	select{
+		text-align: center;
+		width: 200px;
+		background-color: #fff;
+	}
+	div{
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+	label{
+		text-align: center;
+		width: 200px;
 
+	}
+	input{
+		text-align: center;
+		width: 200px;
+	}
+	#enviar input{
+	
+		background-color: linen;
+		border: none;
+		border-radius: 20px;
+		height: 25px;
+		box-shadow: 0px 0px 10px lightgray;
+		transition: .8s;
+		padding: 2px 20px;
+		border: 2px solid wheat;
+		outline: none;
+		margin: 10px;
+	}
+	#enviar{
+		display: flex;
+		justify-content: center;
+	}
+	
+	@media only screen and (max-width: 1010px) {
+		
+		main{
+			display: flex;
+			flex-direction: row-reverse;
+			
+		}
+		#menu{
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			width: 200px;
+			float: left;
+			left: 25px;
+			justify-content: initial;
+			top:50px;
+
+		}
+		button{
+			width: 100%;
+			min-height: 50px;
+			margin-left: 0px;;
+		}
+
+		form{
+		width: calc(100% - 400px);
+		margin: 0px 140px;
+	}
 	}
 
 </style> 
@@ -56,25 +139,27 @@
 
 
 	<body>
+		<h1>Creador de formularios</h1>
+		<main>
 		<div id="menu">
-		<button onclick="texto()">Campo de texto</button>
-		<button onclick="numero()">Campo de número</button>
-		<button onclick="email()">Campo para introducir email</button>
+		<button onclick="texto()">Texto</button>
+		<button onclick="numero()">Número</button>
+		<button onclick="email()">Introducir email</button>
 		<button onclick="lista()">Lista de selección</button>
-		<button onclick="noExclusivo()">Campo para incluir unas opciones no exclusivas de selección</button>
-		<button onclick="exclusivo()">Campo para incluir opciones exclusivas de selección.</button>
+		<button onclick="noExclusivo()">Opciones no exclusivas de selección</button>
+		<button onclick="exclusivo()">Opciones exclusivas de selección.</button>
 		<button onclick="enviar()">Botón de enviar</button>
 		</div>
 	
 
-		<form action="sdfj" style="background-color:aqua">
+		<form action="sdfj">
 			<div id="contenedor">
 
 
 			</div>
 		</form>
 
-		
+		</main>
 			
 
 <script>
@@ -87,7 +172,7 @@
 var contenedor = document.querySelector("#contenedor");
 
 	var titu = prompt("Elige el título de tu formulario");
-	var titulo = document.createElement("h1");
+	var titulo = document.createElement("h2");
 	contenedor.appendChild(titulo);
 	titulo.textContent = titu;
 
@@ -291,6 +376,7 @@ i++;
 function enviar(){
 	
 	var di = document.createElement("div");
+	di.setAttribute("id", "enviar");
 	contenedor.appendChild(di);
 
 	var valorsito = prompt("¿Nombre del botón de enviar?");
